@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void zgadywanka() {
-        Button[] zgdwBttns = new Button[7];
+        Button[] zgdwButtons = new Button[7];
         containerLayout = findViewById(R.id.container);
         containerLayout.removeAllViews();
 
@@ -53,17 +53,15 @@ public class MainActivity extends AppCompatActivity {
         endText.setText("");
 
         Random rand = new Random();
-        for (int i = 0; i < zgdwBttns.length; i++) {
-            zgdwBttns[i] = new Button(this);
-            containerLayout.removeView(zgdwBttns[i]);
+        for (int i = 0; i < zgdwButtons.length; i++) {
+            zgdwButtons[i] = new Button(this);
         }
-        for (Button button : zgdwBttns) {
+        for (Button button : zgdwButtons) {
             containerLayout.addView(button);
             button.setEnabled(true);
         }
 
-
-        schowajPrzyciski(zgdwBttns);
+        schowajPrzyciski(zgdwButtons);
 
         HashSet<Integer> losuj = new HashSet<>();
         while (losuj.size() < 4) {
@@ -71,36 +69,36 @@ public class MainActivity extends AppCompatActivity {
         }
         ArrayList<Integer> losujLista = new ArrayList<>(losuj);
         int counter = 1;
-        losujPrzyciski(zgdwBttns, losujLista, counter);
+        losujPrzyciski(zgdwButtons, losujLista, counter);
     }
 
-    public void losujPrzyciski(Button[] zgdwBttns, ArrayList<Integer> losujLista, int counter) {
+    public void losujPrzyciski(Button[] zgdwButtons, ArrayList<Integer> losujLista, int counter) {
         new CountDownTimer(400, 1000) {
             public void onTick(long untilFinished) {
 
             }
 
             public void onFinish() {
-                zgdwBttns[losujLista.get(counter - 1)].setBackgroundTintList(getResources().getColorStateList(R.color.red, getTheme()));
-                zgdwBttns[losujLista.get(counter - 1)].setText(counter + "");
+                zgdwButtons[losujLista.get(counter - 1)].setBackgroundTintList(getResources().getColorStateList(R.color.red, getTheme()));
+                zgdwButtons[losujLista.get(counter - 1)].setText(counter + "");
                 if (counter < 4) {
-                    losujPrzyciski(zgdwBttns, losujLista, counter + 1);
+                    losujPrzyciski(zgdwButtons, losujLista, counter + 1);
                 } else {
-                    schowajPrzyciski(zgdwBttns);
-                    checkButtons(zgdwBttns, losujLista, 0);
+                    schowajPrzyciski(zgdwButtons);
+                    checkButtons(zgdwButtons, losujLista, 0);
                 }
             }
         }.start();
     }
 
-    public void schowajPrzyciski(Button[] zgdwBttns) {
+    public void schowajPrzyciski(Button[] zgdwButtons) {
         new CountDownTimer(400, 1000) {
             public void onTick(long untilFinished) {
 
             }
 
             public void onFinish() {
-                for (Button button : zgdwBttns) {
+                for (Button button : zgdwButtons) {
                     button.setText("");
                     button.setBackgroundTintList(getResources().getColorStateList(R.color.gray, getTheme()));
                 }
@@ -108,27 +106,27 @@ public class MainActivity extends AppCompatActivity {
         }.start();
     }
 
-    public void checkButtons(Button[] zgdwBttns, ArrayList<Integer> losujLista, int counter) {
-        for (Button button : zgdwBttns) {
+    public void checkButtons(Button[] zgdwButtons, ArrayList<Integer> losujLista, int counter) {
+        for (Button button : zgdwButtons) {
             button.setOnClickListener(v -> {
-                if (button == zgdwBttns[losujLista.get(counter)]) {
+                if (button == zgdwButtons[losujLista.get(counter)]) {
                     if (counter < 3) {
-                        checkButtons(zgdwBttns, losujLista, counter + 1);
+                        checkButtons(zgdwButtons, losujLista, counter + 1);
                     } else {
                         Log.i("GAME", "Wygrana");
-                        endGame(true, zgdwBttns);
+                        endGame(true, zgdwButtons);
                     }
                 } else {
                     Log.i("GAME", "Przegrana");
-                    endGame(false, zgdwBttns);
+                    endGame(false, zgdwButtons);
                 }
             });
         }
     }
 
-    public void endGame(boolean wygrana, Button[] zgdwBttns) {
+    public void endGame(boolean wygrana, Button[] zgdwButtons) {
         TextView endText = findViewById(R.id.endtext);
-        for (Button button : zgdwBttns) {
+        for (Button button : zgdwButtons) {
             button.setEnabled(false);
         }
         if (wygrana) {
