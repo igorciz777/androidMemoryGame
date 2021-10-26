@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">cw4</string>
+    <string name="losuj_liczby">Losuj liczby</string>
+    <string name="losuj">Losuj</string>
+    <string name="sortuj">Sortuj</string>
+    <string name="newton_raphson">Newton-Raphson</string>
+    <string name="o_autorze">O autorze</string>
+    <string name="imie_nazwisko">Igor Ciżewski</string>
+    <string name="ok">OK</string>
+    <string name="przyblizenie">Przybliżenie</string>
+    <string name="pierwiastek">Pierwiastek</string>
+    <string name="oblicz">Oblicz</string>
+    <string name="algorytmy">Algorytmy</string>
+    <string name="monte_carlo">Monte Carlo</string>
+    <string name="resetuj">Resetuj</string>
+    <string name="sortuj_obiekty">Sortuj obiekty</string>
+    <string name="podaj_n">Podaj n</string>
+    <string name="zgadywanka">Zgadywanka</string>
+    <string name="start_za">Start za</string>
+    <string name="win">Wygrana!</string>
+    <string name="lose">Przegrana!</string>
+</resources>
